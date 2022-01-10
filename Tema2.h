@@ -1,8 +1,10 @@
 #pragma once
 
-#include "components/simple_scene.h"
 #include "lab_m1/Tema2/CameraView.h"
-
+#include "lab_m1/Tema2/transform3D.h"
+#include "components/simple_scene.h"
+#include "components/transform.h"
+#include <fstream>
 
 namespace m1
 {
@@ -11,7 +13,6 @@ namespace m1
     public:
         Tema2();
         ~Tema2();
-
         void Init() override;
 
     private:
@@ -19,6 +20,7 @@ namespace m1
         void Update(float deltaTimeSeconds) override;
         void FrameEnd() override;
 
+        void RenderSimpleMesh(Mesh* mesh, Shader* shader, const glm::mat4& modelMatrix, const glm::vec3& color = glm::vec3(1));
         void RenderMesh(Mesh* mesh, Shader* shader, const glm::mat4& modelMatrix) override;
 
         void OnInputUpdate(float deltaTime, int mods) override;
@@ -32,19 +34,38 @@ namespace m1
 
     protected:
         glm::mat4 modelMatrix;
-        implemented::Camera1* camera;
         glm::mat4 projectionMatrix;
+        glm::vec3 lightPosition;
+        glm::vec3 randomize_exit;
+        glm::mat4 Labirint;
+        implemented::Camera1* camera;
+        implemented::Camera1* camera2;
         bool renderCameraTarget;
         bool renderOrtho;
         bool renderFOV;
         float translateX, translateY, translateZ;
+        float newtranslateX, newtranslateY, newtranslateZ;
+        float enemytranslateX, enemytranslateY, enemytranslateZ;
         float left, right, top, bottom, zNear, zFar;
         float bottomOrtho, topOrtho;
         float projectionMin, projectionMax, projectionAngle;
         bool projectionCheck;
         float leftOrtho, rightOrtho;
-
-        // TODO(student): If you need any other class variables, define them here.
-
+        unsigned int materialShininess;
+        float materialKd;
+        float materialKs;
+        bool fireCheck;
+        float projectileDistance;
+        float projectileDistanceMax;
+        bool positionCheck;
+        bool FirstPerson;
+        bool ThirdPerson;
+        float PerspectiveCheck;
+        float Timer;
+        float Rotation;
+        int matrice[10][10];
+        float GameTimer;
+        bool RotationPerspective;
+        float checkMoves;
     };
-}   // namespace m1
+}
