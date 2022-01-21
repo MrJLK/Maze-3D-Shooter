@@ -67,5 +67,6 @@ namespace m1
         float GameTimer;
         bool RotationPerspective;
         float checkMoves;
+        float x, z;
     };
 }

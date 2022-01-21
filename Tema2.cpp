@@ -59,10 +59,10 @@ void Tema2::Init()
 
     // Light & material properties
     {
-        lightPosition = glm::vec3(0.6f, 1.9f, 1.2f);
-        materialShininess = 100000;
+        lightPosition = glm::vec3(camera->GetTargetPosition().x, camera->GetTargetPosition().y, camera->GetTargetPosition().z);
+        materialShininess = 10;
         materialKd = 0.5;
-        materialKs = 0.3;
+        materialKs = 0.5;
     }
 
     // FOV
@@ -106,6 +106,8 @@ void Tema2::Init()
     PerspectiveCheck = 0;
     GameTimer = 2;
     checkMoves = 0;
+    x = -2;
+    z = -2;
     }
 }
 
@@ -288,7 +290,7 @@ void Tema2::Update(float deltaTimeSeconds)
     {
         if (checkMoves == 0)
         {
-            enemytranslateX = enemytranslateX + 1 * deltaTimeSeconds;
+            enemytranslateX = enemytranslateX + 1.2 * deltaTimeSeconds;
             if (enemytranslateX > 0.5)
             {
                 checkMoves = 1;
@@ -296,7 +298,7 @@ void Tema2::Update(float deltaTimeSeconds)
         }
         if (checkMoves == 1)
         {
-            enemytranslateZ = enemytranslateZ + 1 * deltaTimeSeconds;
+            enemytranslateZ = enemytranslateZ + 1.2 * deltaTimeSeconds;
             if (enemytranslateZ >= 0.5)
             {
                 checkMoves = 2;
@@ -304,7 +306,7 @@ void Tema2::Update(float deltaTimeSeconds)
         }
         if (checkMoves == 2)
         {
-            enemytranslateX = enemytranslateX - 1 * deltaTimeSeconds;
+            enemytranslateX = enemytranslateX - 1.2 * deltaTimeSeconds;
             if (enemytranslateX < 0)
             {
                 checkMoves = 3;
@@ -312,13 +314,12 @@ void Tema2::Update(float deltaTimeSeconds)
         }
         if (checkMoves == 3)
         {
-            enemytranslateZ = enemytranslateZ - 1 * deltaTimeSeconds;
+            enemytranslateZ = enemytranslateZ - 1.2 * deltaTimeSeconds;
             if (enemytranslateZ < 0)
             {
                 checkMoves = 0;
             }
         }
-        cout << enemytranslateX << endl;
     }
 
     // Maze
