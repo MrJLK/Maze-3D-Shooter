@@ -70,13 +70,13 @@ void main()
 			culoare = object_color * ambient_light;
 		}
 	}
-	
+
 
     // TODO(student): Compute the total light. You can just add the components
     // together, but if you're feeling extra fancy, you can add individual
     // colors to the light components. To do that, pick some vec3 colors that
     // you like, and multiply them with the respective light components.
-    
+
 
 
 
